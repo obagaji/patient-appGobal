@@ -1,13 +1,17 @@
 package com.appGobal.patient_appGobal.entity;
 
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
-import org.springframework.stereotype.Component;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
-@Component
+@Entity
 @Table(name="patients")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Patients {
 
     @Id
@@ -20,6 +24,8 @@ public class Patients {
     private String phoneNo;
     private String emailAddress;
     private String homeAddress;
+    @OneToOne(cascade= CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "next_of_kin_id")
     private NextOfKin nextOfKin;
 
     public Integer getId() {

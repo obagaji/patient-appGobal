@@ -25,7 +25,11 @@ public class ServiceClass {
     @Autowired
     NextOfKinRepo nextOfKinRepo;
 
-    public List<Patients> AllgetPatients()
+    public Patients savePatients(Patients patients)
+    {
+        return patientsRepo.save(patients);
+    }
+    public List<Patients> allGetPatients()
     {
         return (List<Patients>) patientsRepo.findAll();
     }
@@ -42,7 +46,7 @@ public class ServiceClass {
 
     public Patients updateInfo(Patients patients)
     {
-        Patients patients1 = new Patients();
+        Patients patients1 = patients;
        Optional< Patients> pa  = Optional.ofNullable(patientsRepo.findById(patients.getId()).orElseThrow());
        if(!pa.isEmpty())
        {

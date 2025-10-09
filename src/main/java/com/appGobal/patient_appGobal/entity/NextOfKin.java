@@ -1,16 +1,14 @@
 package com.appGobal.patient_appGobal.entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Builder;
 
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
-import org.springframework.stereotype.Component;
-
-
-@Component
-@Table(name="NextOfKin")
+@Entity
+@Table(name="nextOfKin")
+@Builder
 public class NextOfKin {
-
-
     public NextOfKin(Integer nextOfKinId, String firstNameNof,
                      String midlleNameNof, String lastNameNof)
     {
