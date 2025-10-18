@@ -24,9 +24,29 @@ public class Patients {
     private String phoneNo;
     private String emailAddress;
     private String homeAddress;
+    private String[] roles = {"user"};
     @OneToOne(cascade= CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "next_of_kin_id")
     private NextOfKin nextOfKin;
+
+    public PatientsUser getPatientsUser() {
+        return patientsUser;
+    }
+
+    public void setPatientsUser(PatientsUser patientsUser) {
+        this.patientsUser = patientsUser;
+    }
+
+    @OneToOne(mappedBy = "patients")
+    private PatientsUser patientsUser;
+
+    public String[] getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String[] roles) {
+        this.roles = roles;
+    }
 
     public Integer getId() {
         return id;

@@ -43,7 +43,11 @@ public class ServiceClass {
         nextOfKinRepo.deleteById(id);
          patientsRepo.deleteById(id);
     }
-
+    @Transactional
+    public void deletePatients(Patients pats)
+    {
+        patientsRepo.delete(pats);
+    }
     public Patients updateInfo(Patients patients)
     {
         Patients patients1 = patients;
